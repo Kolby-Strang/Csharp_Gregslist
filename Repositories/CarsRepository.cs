@@ -19,7 +19,7 @@ public class CarsRepository
     INSERT INTO cars (make, model, year, price, imgUrl, runs, mileage)
     VALUES (@Make, @Model, @Year, @Price, @ImgUrl, @Runs, @Mileage);
     
-    SELECT * FROM cars WHERE id = LAST_INSERT_ID();"; // SELECT_LAST_INSERT_ID() is a function that gets the id of the last inserted row in our table
+    SELECT * FROM cars WHERE id = LAST_INSERT_ID();"; // SELECT_LAST_INSERT_ID() is a sql function that gets the id of the last inserted row in our table
 
     // _db.Execute(sql, carData); NOTE runs sql but returns nothing
     Car car = _db.Query<Car>(sql, carData).FirstOrDefault();
