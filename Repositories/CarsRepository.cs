@@ -1,6 +1,8 @@
 
 
 
+
+
 namespace csharp_gregslist.Repositories;
 
 public class CarsRepository
@@ -26,6 +28,13 @@ public class CarsRepository
     return car;
   }
 
+  internal void DestroyCar(int carId)
+  {
+    string sql = "DELETE FROM cars WHERE id = @carId LIMIT 1;";
+
+    _db.Execute(sql, new { carId });
+  }
+
   internal Car GetCarById(int carId)
   {
     // string sql = $"SELECT * FROM cars WHERE id = {carId};"; NEVER INTERPOLATE INSIDE OF SQL STATEMENTS WITH DATA FROM USER
@@ -44,5 +53,22 @@ public class CarsRepository
 
     List<Car> cars = _db.Query<Car>(sql).ToList();
     return cars;
+  }
+
+  internal void UpdateCar(Car originalCar)
+  {
+    string sql = @"
+    UPDATE cars
+    SET
+    model = @Model,
+    price = @Price,
+    year = @Year,
+    mileage = @Mileage,
+    runs = @Runs
+    WHERE id = @Id
+    ;";
+
+    _db.Execute(sql, originalCar);
+
   }
 }
