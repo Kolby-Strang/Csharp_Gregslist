@@ -33,15 +33,17 @@ CREATE TABLE IF NOT EXISTS cars(
   model CHAR(255) NOT NULL,
   year YEAR NOT NULL,
   price INT UNSIGNED NOT NULL,
-  picture VARCHAR(1000) NOT NULL,
+  imgUrl VARCHAR(1000) NOT NULL,
   runs BOOLEAN NOT NULL DEFAULT true,
   mileage INT UNSIGNED NOT NULL DEFAULT 0
 ) default charset utf8 COMMENT '';
 
 INSERT INTO 
-cars (make, model, year, price, picture, runs) 
-VALUES("Mazda", "Miata", 2009, 1000, "https://images.unsplash.com/photo-1552615526-40e47a79f9d7?q=80&w=2176&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", true),
-("FORD", "TRUCK", 2000, 12000, "https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", false );
+cars (make, model, year, price, imgUrl, runs) 
+VALUES("Mazda", "Miata", 2009, 1000, "https://images.unsplash.com/photo-1552615526-40e47a79f9d7?q=80&w=2176&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", true);
+-- ("FORD", "TRUCK", 2000, 12000, "https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", false );
+
+DROP TABLE cars;
 
 SELECT make, model FROM cars;
 
